@@ -26,6 +26,7 @@
                             <th>Phone</th>
                             <th>About</th>
                             <th>Image</th>
+                            <th>Score</th>
                             <th width="280px">Action</th>
                         </tr>
                         @foreach ($parties as $party)
@@ -36,6 +37,7 @@
                             <td>{{ $party->location }}</td>
                             <td>{{ $party->phone }}</td>
                             <td>{{ $party->about }}</td>
+                            <td>{{ $party->total_score }}</td>
                             <td><img src="/images/{{ $party->image }}" width="100px"></td>
                             <td>
                                 <form action="{{ route('parties.destroy', $party->id) }}" method="POST">
