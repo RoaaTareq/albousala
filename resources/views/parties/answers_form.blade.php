@@ -5,9 +5,9 @@
     <h1>Questions for {{ $party->name_parties }}</h1>
     <form action="{{ route('party.answers.store', $party->id) }}" method="POST">
         @csrf
-        @foreach ($questions as $question)
+        @foreach ($questions as $index => $question)
             <div class="mb-3">
-                <label class="form-label">{{ $question->question_text }}</label>
+                <label class="form-label">{{ $index + 1 }}. {{ $question->question_text }}</label>
                 @foreach ($question->options as $option)
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="answers[{{ $question->id }}]" id="option{{ $option->id }}" value="{{ $option->id }}">
