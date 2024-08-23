@@ -24,6 +24,11 @@
         flex-direction:column
 
     }
+    .con2{
+        border: 4px solid orange;
+    border-radius: 12px;
+    margin: 12px 0;
+    }
 </style>
 <body>
     <h1 class='text-center'>شكرا للمشاركة</h1>
@@ -35,7 +40,7 @@
     <h2 class='text-center'>تقارب الاحزاب:</h2>
     <div class='text-center d-flex cont'>
         @foreach($parties->take(3) as $party)
-        <div>
+        <div class="con2">
         <p>{{ $party->name_parties }}</p>
             @php
                 $difference = abs(100 - $party->total_score);
