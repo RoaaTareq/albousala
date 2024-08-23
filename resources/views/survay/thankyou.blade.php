@@ -22,12 +22,11 @@
         margin: 12px ;
         justify-content:center;
         flex-direction:column
-
     }
     .con2{
         border: 4px solid orange;
-    border-radius: 12px;
-    margin: 12px 0;
+        border-radius: 12px;
+        margin: 12px 0;
     }
 </style>
 <body>
@@ -39,21 +38,15 @@
 
     <h2 class='text-center'> أعلى ثلاثة أحزاب تقارب  :</h2>
     <div class='text-center d-flex cont'>
-        @foreach($parties->take(3) as $party)
+        @foreach($parties->sortByDesc('total_score')->take(3) as $party)
         <div class="con2">
-        <p>{{ $party->name_parties }}</p>
+            <p>{{ $party->name_parties }}</p>
             @php
                 $difference = abs(100 - $party->total_score);
-                $differenceFrom100 = 100 - $party->total_score;
-                $differenceFrom1001 = abs($differenceFrom100 - $differencess);
-                $x = abs($differenceFrom1001 - 100);
             @endphp
-            <p>نسبة تقاربك مع الحزب: {{ $x }} %</p>
+            <p>نسبة تقاربك مع الحزب: {{ $difference }} %</p>
         </div>
-          
         @endforeach
-</div>
-
-
+    </div>
 </body>
 </html>
