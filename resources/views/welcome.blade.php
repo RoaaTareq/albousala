@@ -47,7 +47,7 @@
         <div class="px-40 flex flex-1 justify-center py-5" style="padding :120px">
           <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
             <div class="flex flex-wrap justify-between gap-3 p-4">
-              <div class="flex min-w-72 flex-col gap-3">
+              <div class="flex min-w-72 flex-col gap-3 " style="margin:auto">
                 <p  style="text-align:center "class=" text-main text-[#0d151c] text-4xl font-black leading-tight tracking-[-0.033em]">لمعرفة مدى تقاربك مع الأحزاب السياسية أبدأ باستخدام البوصلة </p>
                 <!-- <p class="text-[#49769c] text-base font-normal leading-normal">
                   Answer a few questions and we'll match you with the top 3 political parties that align with your views. This quiz is for educational purposes only.
