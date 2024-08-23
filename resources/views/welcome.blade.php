@@ -48,7 +48,7 @@
           <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
             <div class="flex flex-wrap justify-between gap-3 p-4">
               <div class="flex min-w-72 flex-col gap-3">
-                <p class="text-[#0d151c] text-4xl font-black leading-tight tracking-[-0.033em]">لمعرفة مدى تقاربك مع الأحزاب السياسية أبدأ باستخدام البوصلة </p>
+                <p  style="text-align:center "class=" text-main text-[#0d151c] text-4xl font-black leading-tight tracking-[-0.033em]">لمعرفة مدى تقاربك مع الأحزاب السياسية أبدأ باستخدام البوصلة </p>
                 <!-- <p class="text-[#49769c] text-base font-normal leading-normal">
                   Answer a few questions and we'll match you with the top 3 political parties that align with your views. This quiz is for educational purposes only.
                 </p> -->
@@ -70,11 +70,11 @@
                 ></div> -->
                
               </div>
-              <div class="flex flex-col gap-3 pb-3">
+              <!-- <div class="flex flex-col gap-3 pb-3">
                 <div
                   class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
                   style='background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROjjB70MFC-77wtZVLwoFG3SY2iaovztXGfQ&s");'
-                ></div>
+                ></div> -->
                
               </div>
               <!-- <div class="flex flex-col gap-3 pb-3">
