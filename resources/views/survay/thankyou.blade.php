@@ -21,6 +21,7 @@
     .cont{
         margin: 12px ;
         justify-content:center;
+        flex-direction:column
 
     }
 </style>
@@ -34,7 +35,8 @@
     <h2 class='text-center'>تقارب الاحزاب:</h2>
     <div class='text-center d-flex cont'>
         @foreach($parties->take(3) as $party)
-            <p>{{ $party->name_parties }}</p>
+        <div>
+        <p>{{ $party->name_parties }}</p>
             @php
                 $difference = abs(100 - $party->total_score);
                 $differenceFrom100 = 100 - $party->total_score;
@@ -42,6 +44,8 @@
                 $x = abs($differenceFrom1001 - 100);
             @endphp
             <p>نسبة تقاربك مع الحزب: {{ $x }} %</p>
+        </div>
+          
         @endforeach
 </div>
 
