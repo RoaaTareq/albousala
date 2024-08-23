@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir='rtl'>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>البوصلة</title>
+    <title>Galileo Design</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,">
     
     <!-- Google Fonts -->
@@ -40,12 +40,10 @@
         }
 
         .progress-container {
-            background-color: #e9980a !important;
+            background-color: #d0dbe7;
             border-radius: 0.25rem;
         }
-span{
-  margin: 0 6px;
-}
+
         .question-text {
             color: #0e141b;
             font-weight: bold;
@@ -56,14 +54,13 @@ span{
             display: flex;
             align-items: center;
             padding: 1rem;
-            border: 1px solid  #e9980a !important;
+            border: 1px solid #d0dbe7;
             border-radius: 0.5rem;
             cursor: pointer;
-            width: 100%;
         }
 
         .radio-label:hover {
-            border-color:  #e9980a !important;
+            border-color: #1980e6;
         }
 
         .radio-input {
@@ -77,17 +74,9 @@ span{
         }
 
         .btn-primary:hover {
-            background-color:  #e9980a !important;;
-            border-color: #e9980a !important;;
+            background-color: #166bb3;
+            border-color: #166bb3;
         }
-        .form-check-input:checked {
-    background-color: #e9980a !important;
-    border-color: #e9980a;
-}
-.card{
-  margin: 12px;
-  padding: 12px
-}
     </style>
 </head>
 
@@ -95,37 +84,43 @@ span{
     <div class="container-fluid d-flex flex-column min-vh-100">
         <header class="header d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center gap-2">
-              
-                <h2>البوصلة</h2>
+                <div>
+                    <i class="fa fa-circle-notch fa-2x"></i>
+                </div>
+                <h2>Patriot Match</h2>
             </div>
         </header>
         <main class="flex-grow-1 d-flex justify-content-center align-items-center py-5">
-            <div  style="max-width: 512px;">
-               
-                   
-                <form action="{{ route('survay.store') }}" method="POST">
-        @csrf
-       
-        @foreach ($questions as $question)
-        <div class="card">
-            <div class="style question-container">
-                <label class="text-[#0e141b] text-lg font-bold leading-tight tracking-[-0.015em]">{{ $question->content }}</label>
-                @foreach ($question->options as $option)
-                    <div class="input-container">
-                        <input type="radio"  class="radio-input form-check-input"  name="answers[{{ $loop->parent->index }}][option_id]" value="{{ $option->id }}" id="option{{ $option->id }}">
-                        <label for="option{{ $option->id }}" class="text-[#0e141b] text-sm font-medium">{{ $option->option_text }}</label>
+            <div class="card w-100" style="max-width: 512px;">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <p class="text-muted mb-1">Question 3 of 7</p>
+                        <div class="progress-container mb-1">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 45%;"></div>
+                        </div>
+                        <p class="text-muted">45% complete</p>
                     </div>
-                @endforeach
-                <input type="hidden" name="answers[{{ $loop->index }}][question_id]" value="{{ $question->id }}">
-            </div>
-            </div>
-        @endforeach
+                    <form action="{{ route('survay.store') }}" method="POST">
+                      @csrf
+                      @foreach ($questions as $question)
+                    <h2 class="question-text">{{ $question->content }}</h2>
+                    @foreach ($question->options as $option)
 
-        <div class="submit-button">
-            <button type="submit" class="btn btn-primary">تسليم الإجابة</button>
-        </div>
-    </form>
+                    <div class="mb-4">
+                        <label class="radio-label">
+                            <input  class="radio-input form-check-input"  type="radio" name="answers[{{ $loop->parent->index }}][option_id]" value="{{ $option->id }}" id="option{{ $option->id }}">
+                            <label for="option{{ $option->id }}" class="text-[#0e141b] text-sm font-medium">{{ $option->option_text }}</label>
+
+                        </label>
+                     
+                    </div>
+                    @endforeach
+                    @endforeach
+                    <div class="text-end">
+                        <button class="btn btn-primary">Next</button>
+                    </div>
                 </div>
+              </form>
             </div>
         </main>
     </div>
