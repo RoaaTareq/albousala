@@ -37,7 +37,7 @@
         <!-- Optional: Show total score if needed -->
     @endif
 
-    <h2 class='text-center'> أعلى ثلاثة أحزاب تقارب الاحزاب :</h2>
+    <h2 class='text-center'> أعلى ثلاثة أحزاب تقارب  :</h2>
     <div class='text-center d-flex cont'>
         @foreach($parties->take(3) as $party)
         <div class="con2">
