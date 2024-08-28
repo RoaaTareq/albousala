@@ -37,7 +37,7 @@
     <h2 class='text-center'>تقارب الاحزاب:</h2>
     <ul class='text-center'>
         @foreach($parties as $party)
-            <li>{{ $party->name_parties }}: {{ $party->total_score }}</li>
+            <!-- <li>{{ $party->name_parties }}: {{ $party->total_score }}</li> -->
             <li>{{ $party->name_parties }}</li>
             @php
                 $difference = abs(100 - $party->total_score);
@@ -45,9 +45,9 @@
                 $differenceFrom1001 = abs($differenceFrom100 - $differencess);
                 $x=abs($differenceFrom1001-100)
             @endphp
-            <li>Difference from Party Score: {{ $difference }}</li> 
-            <li>Difference from 100: {{ $differenceFrom100 }}</li>
-             <li>تففف {{ $differenceFrom1001 }}</li>
+            <!-- <li>Difference from Party Score: {{ $difference }}</li> -->
+            <!-- <li>Difference from 100: {{ $differenceFrom100 }}</li> -->
+            <!-- <li>تففف {{ $differenceFrom1001 }}</li> -->
             <li> نسبة تقاربك مع الحزب{{ $x }} %</li>
         @endforeach
     </ul>
