@@ -122,7 +122,7 @@ class PublicAnswerController extends Controller
         }
         
         // Dump all differences after the loop
-        dd($differences);
+        $difference;
         
 
         // Return the view and pass the parties variable
