@@ -13,7 +13,7 @@
         @foreach($parties as $party)
             <li>{{ $party->name_parties }}</li>
             @php
-                $differences = abs(100 - difference);
+                $differences = abs(100 - $party->difference);
             @endphp
             <li>نسبة تقاربك مع الحزب: {{ abs($differences[$index] - 100) }} %</li>
         @endforeach
