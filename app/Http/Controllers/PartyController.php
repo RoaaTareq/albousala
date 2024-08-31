@@ -116,19 +116,4 @@ class PartyController extends Controller
 
         return redirect()->route('party.answers.create', $party->id)->with('success', 'Answers saved successfully.');
     }
-
-    public function calculateDifference($sessionId)
-{
-    $surveyResponse = SurveyResponse::where('session_id', $sessionId)->first();
-    $parties = Party::all();
-
-    foreach ($parties as $party) {
-        $difference = abs($surveyResponse->total_score - $party->total_score);
-        $party->difference = $difference; // Adding the difference to the party object
-    }
-
-    return view('results.show', compact('parties'));
 }
-
-}
-

@@ -114,9 +114,14 @@ class PublicAnswerController extends Controller
     public function showThankYouPage()
     {
         // Fetch all parties with their scores
+        $surveyResponse = SurveyResponse::where('session_id', $sessionId)->first();
         $parties = Party::all();
- // Calculate the difference from 100 for the total score
- $differencess = abs(100 - session('total_score'));
+    
+        foreach ($parties as $party) {
+            $difference = abs($surveyResponse->total_score - $party->total_score);
+            $party->difference = $difference; // Adding the difference to the party object
+        }
+    
 
  // Return the view and pass the parties and differencess variable
  return view('survay.thankyou', compact('parties', 'differencess'));
