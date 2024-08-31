@@ -97,17 +97,8 @@ class PartyController extends Controller
     {
         $party = Party::findOrFail($partyId);
         $questions = Question::with('options')->get();
-    
-        // Assuming you have a way to get the `score` for each user, for simplicity let's say it's stored in the user's session
-        $userScore = session('user_score', 0); // Replace with actual user score logic
-    
-        foreach ($party->answers as $answer) {
-            $answer->difference =abs($userScore) -(100+ $party->total_score);
-        }
-    
         return view('parties.answers_form', compact('party', 'questions'));
     }
-    
 
     public function storeAnswers(Request $request, $partyId)
     {
@@ -125,4 +116,19 @@ class PartyController extends Controller
 
         return redirect()->route('party.answers.create', $party->id)->with('success', 'Answers saved successfully.');
     }
+
+    public function calculateDifference($sessionId)
+{
+    $surveyResponse = SurveyResponse::where('session_id', $sessionId)->first();
+    $parties = Party::all();
+
+    foreach ($parties as $party) {
+        $difference = abs($surveyResponse->total_score - $party->total_score);
+        $party->difference = $difference; // Adding the difference to the party object
+    }
+
+    return view('results.show', compact('parties'));
 }
+
+}
+
