@@ -114,9 +114,8 @@ class PublicAnswerController extends Controller
     
         foreach ($parties as $party) {
             $difference = abs($surveyResponse->total_score - $party->total_score);
-            $party->difference =  abs($surveyResponse->total_score - $party->total_score);
-            // dd($party->difference);
-            // Adding the difference to the party object
+            $party->difference =  $difference;
+
         }
 
         // Return the view and pass the parties variable
