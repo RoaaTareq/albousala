@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html dir='rtl'>
 <head>
-    <title>Results</title>
+    <title>Thank You</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h2 class="text-center">نتائج الاستطلاع</h2>
+    <h1 class="text-center">شكرا للمشاركة</h1>
+
+    <h2 class="text-center">تقارب الاحزاب:</h2>
     <ul class="text-center">
         @foreach($parties as $party)
             <li>{{ $party->name_parties }}</li>
-            <li>نسبة تقاربك مع الحزب: {{ $party->difference }} %</li>
+          
+            <li>نسبة تقاربك مع الحزب:: {{ abs($differences[$index] - 100) }} %</li>
         @endforeach
     </ul>
 </body>
