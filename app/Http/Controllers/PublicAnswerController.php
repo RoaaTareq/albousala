@@ -120,7 +120,7 @@ class PublicAnswerController extends Controller
             $difference = 100 - $party->total_score;
         } else {
             $difference =100- abs($total_score + $party->total_score);
-            dd( $difference );
+            // dd( $difference );
         }
         
         $party->difference = $difference; // Set the difference as an attribute on the party object
