@@ -110,18 +110,15 @@ class PublicAnswerController extends Controller
     
         // Fetch the survey response and all parties
         $surveyResponse = SurveyResponse::where('session_id', $sessionId)->first();
-        $partiesWithDifferences = [];
+        $parties = Party::all();
     
-        foreach (Party::all() as $party) {
+        foreach ($parties as $party) {
             $difference = abs($surveyResponse->total_score - $party->total_score);
-            $partiesWithDifferences[] = [
-                'name_parties' => $party->name_parties,
-                'difference' => $difference
-            ];
+            $party->setAttribute('difference', $difference);
         }
     
-        // Return the view and pass the $partiesWithDifferences array
-        return view('survay.thankyou', ['parties' => $partiesWithDifferences]);
+        // Return the view and pass the parties variable
+        return view('survay.thankyou', compact('parties'));
     }
     
 }
