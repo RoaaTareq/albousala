@@ -10,10 +10,11 @@
 
     <h2 class="text-center">تقارب الاحزاب:</h2>
     <ul class="text-center">
+
         @foreach($parties as $index => $party)
             <li>{{ $party->name_parties }}</li>
             <li>نسبة تقاربك مع الحزب: {{ abs($differences[$index] - 100) }} %</li>
-        @endforeach
+
     </ul>
 </body>
 </html>

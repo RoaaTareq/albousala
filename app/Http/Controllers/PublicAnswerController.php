@@ -102,6 +102,7 @@ class PublicAnswerController extends Controller
                 ->update(['total_score' => $totalScore]);
         }
     }
+
     public function showThankYouPage(Request $request)
     {
         // Retrieve session_id from session
@@ -123,8 +124,6 @@ class PublicAnswerController extends Controller
         // Return the view and pass the parties, differences arrays, and total_score
         return view('survay.thankyou', compact('parties', 'differences', 'total_score'));
     }
-    
 }
-
 
 ?>
