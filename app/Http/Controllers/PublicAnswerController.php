@@ -113,7 +113,7 @@ class PublicAnswerController extends Controller
         $parties = Party::all();
     
         foreach ($parties as $party) {
-            $difference = abs($surveyResponse->total_score - $party->total_score);
+            $difference = $surveyResponse->total_score - $party->total_score;
             $party->difference = $difference; // Adding the difference to the party object
         }
 
