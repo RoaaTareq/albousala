@@ -13,7 +13,7 @@
 
         @foreach($parties as $index => $party)
             <li>{{ $party->name_parties }}</li>
-            <li>نسبة تقاربك مع الحزب: {{ abs($differences[$index] - 100) }} %</li>
+            <li>نسبة تقاربك مع الحزب: {{ abs($differences[$index]) }} %</li>
             @endforeach
     </ul>
 </body>
