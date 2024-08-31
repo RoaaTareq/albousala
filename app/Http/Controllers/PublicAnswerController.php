@@ -117,7 +117,7 @@ class PublicAnswerController extends Controller
     
         foreach ($parties as $party) {
             $difference = abs($total_score - $party->total_score);
-            dd($party->total_score);
+            // dd($party->total_score);
             dd($total_score);
             $party->difference = $difference; // Set the difference as an attribute on the party object
             $differences[] = $difference; // Collect the difference in an array
