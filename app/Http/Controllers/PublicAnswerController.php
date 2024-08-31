@@ -112,13 +112,18 @@ class PublicAnswerController extends Controller
         $surveyResponse = SurveyResponse::where('session_id', $sessionId)->first();
         $parties = Party::all();
     
+        $differences = [];
+
         foreach ($parties as $party) {
             $difference = abs($surveyResponse->total_score - $party->total_score);
             $party->difference =  $difference;
-        
-            // Log the difference instead of using dd()
-           dd( Log::info('Party Difference:', ['difference' => $difference]));
+            
+            $differences[] = $difference;
         }
+        
+        // Dump all differences after the loop
+        dd($differences);
+        
 
         // Return the view and pass the parties variable
         return view('survay.thankyou', compact('parties'));
