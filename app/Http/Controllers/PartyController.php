@@ -102,7 +102,7 @@ class PartyController extends Controller
         $userScore = session('user_score', 0); // Replace with actual user score logic
     
         foreach ($party->answers as $answer) {
-            $answer->difference = abs($userScore )- $party->total_score;
+            $answer->difference = abs($userScore )+$party->total_score;
         }
     
         return view('parties.answers_form', compact('party', 'questions'));
