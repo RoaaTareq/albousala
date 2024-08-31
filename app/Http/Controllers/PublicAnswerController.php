@@ -104,29 +104,32 @@ class PublicAnswerController extends Controller
     }
 
     public function showThankYouPage(Request $request)
-    {
-        // Retrieve session_id from session
-        $sessionId = $request->session()->get('session_id');
-    
-        // Fetch the survey response and all parties
-        $surveyResponse = SurveyResponse::where('session_id', $sessionId)->first();
-        $parties = Party::all();
-    
-        $differences = [];
-        $total_score = $surveyResponse->total_score; // Get the total score
-    
-        foreach ($parties as $party) {
+{
+    // Retrieve session_id from session
+    $sessionId = $request->session()->get('session_id');
+
+    // Fetch the survey response and all parties
+    $surveyResponse = SurveyResponse::where('session_id', $sessionId)->first();
+    $parties = Party::all();
+
+    $differences = [];
+    $total_score = $surveyResponse->total_score; // Get the total score
+
+    foreach ($parties as $party) {
+        if ($total_score == 0) {
+            $difference = 100 - $party->total_score;
+        } else {
             $difference = abs($total_score - $party->total_score);
-            // dd($party->total_score);
-            // dd($total_score);
-            dd($difference);
-            $party->difference = $difference; // Set the difference as an attribute on the party object
-            $differences[] = $difference; // Collect the difference in an array
         }
-    
-        // Return the view and pass the parties, differences arrays, and total_score
-        return view('survay.thankyou', compact('parties', 'differences', 'total_score'));
+        
+        $party->difference = $difference; // Set the difference as an attribute on the party object
+        $differences[] = $difference; // Collect the difference in an array
     }
+
+    // Return the view and pass the parties, differences arrays, and total_score
+    return view('survay.thankyou', compact('parties', 'differences', 'total_score'));
+}
+
 }
 
 ?>
