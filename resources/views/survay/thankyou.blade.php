@@ -12,7 +12,7 @@
     <ul class="text-center">
         @foreach($parties as $index => $party)
             <li>{{ $party->name_parties }}</li>
-            @if($total_score != 0)
+            @if($total_score === 0)
                 <li>نسبة تقاربك مع الحزب: {{ abs($differences[$index] - 100) }} %</li>
             @else
                 <li>نسبة تقاربك مع الحزب: {{ abs($differences[$index]) }} %</li>
