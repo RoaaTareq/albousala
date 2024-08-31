@@ -71,16 +71,9 @@ class PublicAnswerController extends Controller
 
         if ($allZeros) {
             $totalScore = 0;
-        }  else {
-            $maxValue = 100;
-
-            if ($maxValue == 0) {
-                $totalScore = 100;
-            } else {
-                $totalScore = abs ($totalValue );
-                // dd($totalScore);
-                $totalScore = max($totalScore, 0);
-            }
+        } else {
+            $totalScore = abs($totalValue);
+            $totalScore = max($totalScore, 0);
         }
 
         $surveyResponse->update(['total_score' => $totalScore]);
@@ -103,7 +96,6 @@ class PublicAnswerController extends Controller
                 ->join('options', 'user_answers.option_id', '=', 'options.id')
                 ->join('questions', 'user_answers.question_id', '=', 'questions.id')
                 // Example criteria, adjust according to your logic
-                // ->where('questions.some_column', $party->some_column)
                 ->sum('user_answers.score');
 
             Party::where('id', $party->id)
@@ -111,9 +103,12 @@ class PublicAnswerController extends Controller
         }
     }
 
-    public function showThankYouPage()
+    public function showThankYouPage(Request $request)
     {
-        // Fetch all parties with their scores
+        // Retrieve session_id from session
+        $sessionId = $request->session()->get('session_id');
+
+        // Fetch the survey response and all parties
         $surveyResponse = SurveyResponse::where('session_id', $sessionId)->first();
         $parties = Party::all();
     
@@ -121,10 +116,11 @@ class PublicAnswerController extends Controller
             $difference = abs($surveyResponse->total_score - $party->total_score);
             $party->difference = $difference; // Adding the difference to the party object
         }
-    
 
- // Return the view and pass the parties and differencess variable
- return view('survay.thankyou', compact('parties', 'differencess'));
-    
+        // Return the view and pass the parties variable
+        return view('survay.thankyou', compact('parties'));
+    }
 }
-}
+
+
+?>
