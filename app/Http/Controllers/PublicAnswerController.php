@@ -117,7 +117,7 @@ class PublicAnswerController extends Controller
             
             $party->difference = $difference;
              // Adding the difference to the party object
-             dd($party->difference);
+            //  dd($party->difference);
         }
 
         // Return the view and pass the parties variable
